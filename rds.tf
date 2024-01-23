@@ -2,8 +2,8 @@
 
 provider "aws" {
   region     = "eu-west-2"
-  access_key = "#################"
-  secret_key = "###################"
+  access_key = "###############"
+  secret_key = "#####################"
 }
 
 # create default vpc if one does not exit
@@ -107,7 +107,7 @@ resource "aws_db_subnet_group" "database_subnet_group" {
 # Create the RDS instance
 resource "aws_db_instance" "db_instance" {
   engine         = "postgres"
-  engine_version = "15.4-R3" # Specify the desired PostgreSQL version
+  engine_version = "11.16" # Specify the desired PostgreSQL version
 
   multi_az = false # Set to true for Multi-AZ deployment, if needed
 
@@ -118,7 +118,7 @@ resource "aws_db_instance" "db_instance" {
   instance_class    = "db.t2.micro" # Specify the instance type
   allocated_storage = 20            # Specify the allocated storage in GB
 
-  db_subnet_group_name = "aws_db_subnet_group.database_subnet_group.name" # Name of the DB subnet group
+  db_subnet_group_name = aws_db_subnet_group.database_subnet_group.name # Name of the DB subnet group
 
   vpc_security_group_ids = [aws_security_group.database_security_group.id] # List of security group IDs
 
