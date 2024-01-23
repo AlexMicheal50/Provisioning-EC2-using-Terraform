@@ -113,7 +113,7 @@ resource "aws_db_instance" "db_instance" {
 
   identifier = "sternpay-postgres-db" # Unique identifier for the RDS instance
   username   = "devops"
-  password   = "Gyn4BPo3axwEUBFhnoaD"
+  password   = "#################"
 
   instance_class    = "db.t2.micro" # Specify the instance type
   allocated_storage = 20            # Specify the allocated storage in GB
